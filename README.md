@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to the Trainline second‑round interview tech challenge. You'll pair‑program with us for about 90 minutes to build a small HTTP service. Before you start, please read the guidelines below so you know what we're looking for 🙂
+Welcome to the DataArt interview tech challenge. You'll pair‑program with us for about 90 minutes to build a small HTTP service. Before you start, please read the guidelines below so you know what we're looking for 🙂
 
 - **Open‑ended by design** – choose the architecture, libraries and patterns you'd use in production.
 - **Quality over completeness** – clean code, clear naming, sensible tests and iterative refactoring matter more than "finishing".
