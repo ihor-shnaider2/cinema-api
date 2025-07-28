@@ -15,9 +15,7 @@ Welcome to the DataArt interview tech challenge. You'll pair‑program with us f
 - automated tests (TDD or test‑after – your choice)
 - graceful failure‑handling
 
-It's an "open book" exercise – Google/Stack Overflow are all fine.
-
-Any IDE or editor is welcome.
+It's an "open book" exercise – Google/Stack Overflow are all fine. Any IDE or editor is welcome.
 
 Have fun! Treat the interviewer like a teammate – feel free to ask questions or bounce ideas.
 
@@ -68,10 +66,9 @@ Create a REST‑style API that lets clients query seat availability.
 ```json
 {
   "auditorium": "Main-Hall",
-  "filmTitle": "Interstellar (re-release)",
+  "filmTitle": "Space Odyssey",
   "startTime": "19:00",
   "cached": false,
-  "lastSyncedUtc": "2025-07-28T16:02:05Z",
   "seats": [
     { "row": "A", "seat": 1, "status": "sold" },
     { "row": "A", "seat": 2, "status": "sold" },
@@ -100,7 +97,7 @@ If you complete the core requirements early, feel free to tackle any of these ad
 - Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both—your choice.
 - Hard‑code the feed URL in appsettings.json; design so it can be swapped for a real endpoint later.
 - No authentication, payments or multi‑screen logic required.
-- Prioritise readability, separation of concerns and meaningful tests—100% coverage is not required.
+- Prioritise readability, separation of concerns and meaningful tests — 100% coverage is not required.
 - Use any packages (like Polly) you'd normally reach for.
 
 Happy coding!
