@@ -44,18 +44,18 @@ The file looks like this:
 ```
 
 Each row string is read left → right.
-- `0` = free
-- `1` = sold
+- `0` = available
+- `1` = booked
 
 ## Your Task
 
 Create a REST‑style API that lets clients query seat availability.
 
-| Requirement | Details                                                                                                                                                                                                                                     |
-|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Retrieve full map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). If the upstream call fails or times out, serve the most recent copy held in an in‑memory cache with a 3–5 s TTL. |
-| **Check one seat** | Return a status of one seat by passing a row and a seat number.                                                                                                                                                                             |
-| **Resilience** | Implement some resilience techniques so callers remain responsive during transient failures.                                                                                                                                                |
+| Requirement | Details |
+| - | - |
+| **Retrieve full map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). |
+| **Check one seat** | Return a status of one seat by passing a row and a seat number. |
+| **Resilience** | Implement some resilience techniques so callers remain responsive during transient failures. |
 
 ## Sample Response Contract
 
@@ -66,14 +66,13 @@ Create a REST‑style API that lets clients query seat availability.
   "auditorium": "Main-Hall",
   "filmTitle": "Space Odyssey",
   "startTime": "19:00",
-  "cached": false,
   "seats": [
-    { "row": "A", "seat": 1, "status": "sold" },
-    { "row": "A", "seat": 2, "status": "sold" },
-    { "row": "A", "seat": 3, "status": "sold" },
-    { "row": "B", "seat": 1, "status": "sold" },
-    { "row": "B", "seat": 2, "status": "sold" },
-    { "row": "B", "seat": 3, "status": "free" }
+    { "row": "A", "seat": 1, "status": "booked" },
+    { "row": "A", "seat": 2, "status": "booked" },
+    { "row": "A", "seat": 3, "status": "booked" },
+    { "row": "B", "seat": 1, "status": "booked" },
+    { "row": "B", "seat": 2, "status": "booked" },
+    { "row": "B", "seat": 3, "status": "available" }
   ]
 }
 ```
@@ -81,12 +80,13 @@ Create a REST‑style API that lets clients query seat availability.
 ### Check a seat (e.g. B3)
 
 ```json
-{ "free": true }
+{ "available": true }
 ```
 
 ## Extension Opportunities
 
 If you complete the core requirements early, feel free to tackle any of these advanced tasks:
+- In-memory cache: If the upstream call fails or times out, serve the most recent copy held in an in‑memory cache with a 3–5 s TTL.
 - Adjacent‑pair finder: For a given number `minSeats`, examine each row’s seats to locate at least `minSeats` adjacent free seats; if found, return `found: true` and the first matching block (e.g. “B3–B4”)
 - Provide a **docker-compose.yml** so we can `docker compose up`.
 
@@ -94,8 +94,8 @@ If you complete the core requirements early, feel free to tackle any of these ad
 
 - Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both—your choice.
 - Hard‑code the feed URL in appsettings.json; design so it can be swapped for a real endpoint later.
-- No authentication, payments or multi‑screen logic required.
+- No authentication logic required.
 - Prioritise readability, separation of concerns and meaningful tests — 100% coverage is not required.
-- Use any packages (like Polly) you'd normally reach for.
+- Use any NuGet packages you'd normally reach for.
 
 Happy coding!
