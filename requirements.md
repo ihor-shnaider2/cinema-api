@@ -15,7 +15,7 @@ Welcome to the DataArt interview tech challenge. You'll pair‑program with us f
 - automated tests (TDD or test‑after – your choice)
 - graceful failure‑handling
 
-It's an "open book" exercise – Google/Stack Overflow are all fine. Any IDE or editor is welcome.
+It's an "open book" exercise – Google/Stack Overflow are all fine (but not AI). Any IDE or editor is welcome.
 
 Have fun! Treat the interviewer like a teammate – feel free to ask questions or bounce ideas.
 
@@ -38,7 +38,7 @@ The file looks like this:
     "A": "111111",
     "B": "110000",
     "C": "11111001",
-    "D": "1111111011"
+    "D": "1111111011",
   }
 }
 ```
