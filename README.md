@@ -23,7 +23,7 @@ Good luck! 🚀
 
 ## Scenario
 
-The cinema has one auditorium and is showing a single film at 19:00 tonight. Live seat availability is exposed via a JSON file on GitHub (our "flaky" upstream):
+The cinema has one auditorium and is showing a single film at 19:00 tonight. Assume the URL sometimes delays or returns 404. Live seat availability is exposed via a JSON file on GitHub (our "flaky" upstream):
 
 https://raw.githubusercontent.com/ihor-shnaider2/cinema-api/main/seatmap-example.json
 
@@ -47,21 +47,19 @@ Each row string is read left → right.
 - `0` = free
 - `1` = sold
 
-Assume the URL sometimes delays or returns 404.
-
 ## Your Task
 
 Create a REST‑style API that lets clients query seat availability.
 
 | Requirement | Details                                                                                                                                                                                                                                     |
 |-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Retrieve full map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). If the upstream call fails or times out, serve the most recent copy held in an in‑memory cache with a 3–5 s TTL and include `"cached": true`. |
+| **Retrieve full map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). If the upstream call fails or times out, serve the most recent copy held in an in‑memory cache with a 3–5 s TTL. |
 | **Check one seat** | Return a status of one seat by passing a row and a seat number.                                                                                                                                                                             |
 | **Resilience** | Implement some resilience techniques so callers remain responsive during transient failures.                                                                                                                                                |
 
 ## Sample Response Contract
 
-### GET Seat Plan
+### Get Seat Plan
 
 ```json
 {
@@ -80,7 +78,7 @@ Create a REST‑style API that lets clients query seat availability.
 }
 ```
 
-### GET Check a seat (e.g. B3)
+### Check a seat (e.g. B3)
 
 ```json
 { "free": true }
