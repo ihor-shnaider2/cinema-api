@@ -53,8 +53,9 @@ Create a REST‑style API that lets clients query seat availability.
 
 | Requirement | Details |
 | - | - |
-| **Retrieve full map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). |
-| **Check one seat** | Return a status of one seat by passing a row and a seat number. |
+| **Endpoint for retrieving a map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). |
+| **Endpoint for check one seat** | Return a status of one seat by passing a row and a seat number. |
+| **RESTful** | Follow RESTful priciples when designing your API.  |
 | **Resilience** | Implement some resilience techniques so callers remain responsive during transient failures. |
 | **Testing** | Cover the core functionality with unit & integration tests |
 
