@@ -99,4 +99,3 @@ If you complete the core requirements early, feel free to tackle any of these ad
 - Use any NuGet packages you'd normally reach for.
 
 Happy coding!
-	
