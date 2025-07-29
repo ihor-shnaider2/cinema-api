@@ -1,11 +1,13 @@
-{
-  "auditorium": "Main-Hall",
-  "filmTitle":  "Interstellar (re-release)",
-  "startTime":  "1753804800",
-  "seatRows": {
-    "A": "1111111111",
-    "B": "1100001111",
-    "C": "1111100111",
-    "D": "1111111111",
+[
+  {
+    "auditorium": "Main-Hall",
+    "filmTitle": "Space Odyssey",
+    "startTime": "1753804800",
+    "seatRows": {
+      "A": "111111",
+      "B": "110000",
+      "C": "11111001",
+      "D": "1111111011",
+    }
   }
-}
+]

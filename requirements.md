@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Welcome to the DataArt interview tech challenge. You'll pair‑program with us for about 90 minutes to build a small HTTP service. Before you start, please read the guidelines below so you know what we're looking for 🙂
+Welcome to the DataArt interview tech challenge. You'll join us for a 90-minute remote session, during which you'll share your screen and lead the implementation of a small HTTP service, while we support and collaborate with you throughout the process. Before you start, please read the guidelines below so you know what we're looking for 🙂
 
-- **Open‑ended by design** – choose the architecture, libraries and patterns you'd use in production.
+- **RESTful design** – follow the REST API principles for the architecture
 - **Quality over completeness** – clean code, clear naming, sensible tests and iterative refactoring matter more than "finishing".
 - **Think out loud**: we're interested in your reasoning as much as the code you type.
 
@@ -23,16 +23,16 @@ Good luck! 🚀
 
 ## Scenario
 
-The cinema has one auditorium and is showing a single film at 19:00 tonight. Assume the URL sometimes delays or returns 404. Live seat availability is exposed via a JSON file on GitHub (our "flaky" upstream):
+The cinema has one auditorium and is showing a single film at 19:00 tonight. Assume the URL sometimes delays or returns 404. Live seat availability is exposed via our "flaky" upstream API:
 
 https://raw.githubusercontent.com/ihor-shnaider2/cinema-api/main/seatmap-example.json
 
-The file looks like this:
+The response looks like this:
 
 ```json
-{
+[{
   "auditorium": "Main-Hall",
-  "filmTitle":  "Interstellar",
+  "filmTitle":  "Space Odyssey",
   "startTime":  "1753804800",
   "seatRows": {
     "A": "111111",
@@ -40,7 +40,7 @@ The file looks like this:
     "C": "11111001",
     "D": "1111111011",
   }
-}
+}]
 ```
 
 Each row string is read left → right.
@@ -56,6 +56,7 @@ Create a REST‑style API that lets clients query seat availability.
 | **Retrieve full map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). |
 | **Check one seat** | Return a status of one seat by passing a row and a seat number. |
 | **Resilience** | Implement some resilience techniques so callers remain responsive during transient failures. |
+| **Testing** | Cover the core functionality with unit & integration tests |
 
 ## Sample Response Contract
 
