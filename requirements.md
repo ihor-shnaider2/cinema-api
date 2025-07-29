@@ -1,4 +1,4 @@
-# Cinema Seat Availability Service – Technical Test
+# Cinema Seat Service – Technical Exercise
 
 ## Introduction
 
@@ -33,12 +33,12 @@ The file looks like this:
 {
   "auditorium": "Main-Hall",
   "filmTitle":  "Interstellar",
-  "startTime":  "19:00",
+  "startTime":  "1753804800",
   "seatRows": {
     "A": "111111",
     "B": "110000",
-    "C": "111110",
-    "D": "111111"
+    "C": "11111001",
+    "D": "1111111011"
   }
 }
 ```
@@ -87,13 +87,13 @@ Create a REST‑style API that lets clients query seat availability.
 
 If you complete the core requirements early, feel free to tackle any of these advanced tasks:
 - In-memory cache: If the upstream call fails or times out, serve the most recent copy held in an in‑memory cache with a 3–5 s TTL.
-- Adjacent‑pair finder: For a given number `minSeats`, examine each row’s seats to locate at least `minSeats` adjacent free seats; if found, return `found: true` and the first matching block (e.g. “B3–B4”)
+- Adjacent‑pair finder: Scan each row to find the first sequence of at least minSeats adjacent and unoccupied seats. If such a block exists, return found: true along with the seat range (e.g. seats "B3–B4"). If none are found in any row, return `found: false`.
 - Provide a **docker-compose.yml** so we can `docker compose up`.
 
 ## Notes & Constraints
 
-- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both—your choice.
-- Hard‑code the feed URL in appsettings.json; design so it can be swapped for a real endpoint later.
+- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both — your choice.
+- Hard-code the feed URL, but keep the design flexible for future endpoint replacement.
 - No authentication logic required.
 - Prioritise readability, separation of concerns and meaningful tests — 100% coverage is not required.
 - Use any NuGet packages you'd normally reach for.
