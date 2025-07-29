@@ -1,0 +1,11 @@
+{
+  "auditorium": "Main-Hall",
+  "filmTitle":  "Interstellar (re-release)",
+  "startTime":  "19:00",
+  "seatRows": {
+    "A": "1111111111",
+    "B": "1100001111",
+    "C": "1111100111",
+    "D": "1111111111"
+  }
+}
