@@ -57,7 +57,7 @@ Create a REST‑style API that lets clients query seat availability.
 | **Endpoint for check one seat** | Return a status of one seat by passing a row and a seat number. |
 | **RESTful** | Follow RESTful priciples when designing your API.  |
 | **Resilience** | Implement some resilience techniques so callers remain responsive during transient failures. |
-| **Testing** | Cover the core functionality with unit & integration tests |
+| **Testing** | Cover the core functionality with unit tests|
 
 ## Sample Response Contract
 
@@ -90,11 +90,12 @@ Create a REST‑style API that lets clients query seat availability.
 If you complete the core requirements early, feel free to tackle any of these advanced tasks:
 - In-memory cache: If the upstream call fails or times out, serve the most recent copy held in an in‑memory cache with a 3–5 s TTL.
 - Adjacent‑pair finder: Scan each row to find the first sequence of at least minSeats adjacent and unoccupied seats. If such a block exists, return found: true along with the seat range (e.g. seats "B3–B4"). If none are found in any row, return `found: false`.
+- Add some integration tests
 - Provide a **docker-compose.yml** so we can `docker compose up`.
 
 ## Notes & Constraints
 
-- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both — your choice. If neccessary, you can also clone a basic API from here: https://github.com/ihor-shnaider2/cinema-api/tree/main/Cinema.API
+- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both — your choice. If neccessary, you can also clone a basic API from here: [Link](./Cinema.API/)
 - Hard-code the feed URL, but keep the design flexible for future endpoint replacement.
 - No authentication logic required.
 - Prioritise readability, separation of concerns and meaningful tests — 100% coverage is not required.
