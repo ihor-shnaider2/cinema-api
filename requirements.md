@@ -94,7 +94,7 @@ If you complete the core requirements early, feel free to tackle any of these ad
 
 ## Notes & Constraints
 
-- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both — your choice.
+- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both — your choice. If neccessary, you can also clone a basic API from here: https://github.com/ihor-shnaider2/cinema-api/tree/main/Cinema.API
 - Hard-code the feed URL, but keep the design flexible for future endpoint replacement.
 - No authentication logic required.
 - Prioritise readability, separation of concerns and meaningful tests — 100% coverage is not required.
