@@ -1,10 +1,10 @@
-# Cinema Seat Availability Service – Technical Test
+# Cinema Seat Service – Technical Exercise
 
 ## Introduction
 
-Welcome to the DataArt interview tech challenge. You'll pair‑program with us for about 90 minutes to build a small HTTP service. Before you start, please read the guidelines below so you know what we're looking for 🙂
+Welcome to the DataArt interview tech challenge. You'll join us for a 90-minute remote session, during which you'll share your screen and lead the implementation of a small HTTP service, while we support and collaborate with you throughout the process. Before you start, please read the guidelines below so you know what we're looking for 🙂
 
-- **Open‑ended by design** – choose the architecture, libraries and patterns you'd use in production.
+- **RESTful design** – follow the REST API principles for the architecture
 - **Quality over completeness** – clean code, clear naming, sensible tests and iterative refactoring matter more than "finishing".
 - **Think out loud**: we're interested in your reasoning as much as the code you type.
 
@@ -15,7 +15,7 @@ Welcome to the DataArt interview tech challenge. You'll pair‑program with us f
 - automated tests (TDD or test‑after – your choice)
 - graceful failure‑handling
 
-It's an "open book" exercise – Google/Stack Overflow are all fine. Any IDE or editor is welcome.
+It's an "open book" exercise – Google/Stack Overflow are all fine (but not AI). Any IDE or editor is welcome.
 
 Have fun! Treat the interviewer like a teammate – feel free to ask questions or bounce ideas.
 
@@ -23,24 +23,24 @@ Good luck! 🚀
 
 ## Scenario
 
-The cinema has one auditorium and is showing a single film at 19:00 tonight. Assume the URL sometimes delays or returns 404. Live seat availability is exposed via a JSON file on GitHub (our "flaky" upstream):
+The cinema has one auditorium and is showing a single film at 19:00 tonight. Assume the URL sometimes delays or returns 404. Live seat availability is exposed via our "flaky" upstream API:
 
 https://raw.githubusercontent.com/ihor-shnaider2/cinema-api/main/seatmap-example.json
 
-The file looks like this:
+The response looks like this:
 
 ```json
-{
+[{
   "auditorium": "Main-Hall",
-  "filmTitle":  "Interstellar",
-  "startTime":  "19:00",
+  "filmTitle":  "Space Odyssey",
+  "startTime":  "1753804800",
   "seatRows": {
     "A": "111111",
     "B": "110000",
-    "C": "111110",
-    "D": "111111"
+    "C": "11111001",
+    "D": "1111111011",
   }
-}
+}]
 ```
 
 Each row string is read left → right.
@@ -53,9 +53,11 @@ Create a REST‑style API that lets clients query seat availability.
 
 | Requirement | Details |
 | - | - |
-| **Retrieve full map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). |
-| **Check one seat** | Return a status of one seat by passing a row and a seat number. |
+| **Endpoint for retrieving a map** | Return the entire seat layout converted to an object‑per‑seat structure (see contract below). |
+| **Endpoint for check one seat** | Return a status of one seat by passing a row and a seat number. |
+| **RESTful** | Follow RESTful priciples when designing your API.  |
 | **Resilience** | Implement some resilience techniques so callers remain responsive during transient failures. |
+| **Testing** | Cover the core functionality with unit tests|
 
 ## Sample Response Contract
 
@@ -87,13 +89,14 @@ Create a REST‑style API that lets clients query seat availability.
 
 If you complete the core requirements early, feel free to tackle any of these advanced tasks:
 - In-memory cache: If the upstream call fails or times out, serve the most recent copy held in an in‑memory cache with a 3–5 s TTL.
-- Adjacent‑pair finder: For a given number `minSeats`, examine each row’s seats to locate at least `minSeats` adjacent free seats; if found, return `found: true` and the first matching block (e.g. “B3–B4”)
+- Adjacent‑pair finder: Scan each row to find the first sequence of at least minSeats adjacent and unoccupied seats. If such a block exists, return found: true along with the seat range (e.g. seats "B3–B4"). If none are found in any row, return `found: false`.
+- Add some integration tests
 - Provide a **docker-compose.yml** so we can `docker compose up`.
 
 ## Notes & Constraints
 
-- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both—your choice.
-- Hard‑code the feed URL in appsettings.json; design so it can be swapped for a real endpoint later.
+- Target .NET 8 (or latest LTS). Minimal APIs, MVC controllers or both — your choice. If neccessary, you can also clone a basic API from here: [Link](./Cinema.API/)
+- Hard-code the feed URL, but keep the design flexible for future endpoint replacement.
 - No authentication logic required.
 - Prioritise readability, separation of concerns and meaningful tests — 100% coverage is not required.
 - Use any NuGet packages you'd normally reach for.
