@@ -1,0 +1,13 @@
+[
+  {
+    "auditorium": "Main-Hall",
+    "filmTitle": "Space Odyssey",
+    "startTime": "1753804800",
+    "seatRows": {
+      "A": "111111",
+      "B": "110000",
+      "C": "11111001",
+      "D": "1111111011",
+    }
+  }
+]
