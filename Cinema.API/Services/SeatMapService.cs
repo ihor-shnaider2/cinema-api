@@ -79,11 +79,11 @@ public class SeatMapService : ISeatMapService
             // Double-check cache after acquiring lock (another request may have populated it)
             if (_memoryCache.TryGetValue(CacheKey, out cachedData))
             {
-                _logger.LogDebug("Returning seat map from cache (after lock)");
+                _logger.LogInformation("Returning seat map from cache (after acquiring semaphore)");
                 return cachedData;
             }
 
-            _logger.LogInformation("Fetching seat map from upstream API");
+            _logger.LogInformation("Fetching seat map from upstream API (cache miss)");
             
             // Fetch from upstream with cancellation support
             using var response = await _httpClient.GetAsync(_settings.SeatMapUrl, cancellationToken);
